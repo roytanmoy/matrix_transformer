@@ -10,6 +10,7 @@ func TestEcho(t *testing.T) {
 	}
 	expected := "1,2,3\n4,5,6\n7,8,9"
 	result := Echo(records)
+
 	if result != expected {
 		t.Errorf("Echo was incorrect, got: %s, expected: %s.", result, expected)
 	}
