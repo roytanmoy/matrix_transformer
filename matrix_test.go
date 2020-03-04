@@ -49,3 +49,87 @@ func TestInvert(t *testing.T) {
 		t.Errorf("Invert was incorrect, got: %s, expected: %s.", result, expected)
 	}
 }
+
+func TestFlatten(t *testing.T) {
+	records := [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"7", "8", "9"},
+	}
+	expected := "1,2,3,4,5,6,7,8,9"
+	result := Flatten(records)
+	if result != expected {
+		t.Errorf("Flatten was incorrect, got: %s, expected: %s.", result, expected)
+	}
+
+	records = [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"X", "Y", "Z"},
+	}
+	expected = "1,2,3,4,5,6,X,Y,Z"
+	result = Flatten(records)
+	if result != expected {
+		t.Errorf("Flatten was incorrect, got: %s, expected: %s.", result, expected)
+	}
+}
+
+func TestSum(t *testing.T) {
+	records := [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"7", "8", "9"},
+	}
+	expected := "45"
+	result, err := Sum(records)
+	if result != expected {
+		t.Errorf("Sum was incorrect, got: %s, expected: %s.", result, expected)
+	}
+	if err != nil {
+		t.Errorf("non-nil Error returned: %s", err.Error())
+	}
+
+	records = [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"X", "Y", "Z"},
+	}
+	expected = ""
+	result, err = Sum(records)
+	if result != expected {
+		t.Errorf("Sum was incorrect, got: %s, expected: %s.", result, expected)
+	}
+	if err == nil {
+		t.Errorf("nil Error returned, expected non-nil")
+	}
+}
+
+func TestMultiply(t *testing.T) {
+	records := [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"7", "8", "9"},
+	}
+	expected := "362880"
+	result, err := Multiply(records)
+	if result != expected {
+		t.Errorf("Multiply was incorrect, got: %s, expected: %s.", result, expected)
+	}
+	if err != nil {
+		t.Errorf("non-nil Error returned: %s", err.Error())
+	}
+
+	records = [][]string{
+		{"1", "2", "3"},
+		{"4", "5", "6"},
+		{"X", "Y", "Z"},
+	}
+	expected = ""
+	result, err = Multiply(records)
+	if result != expected {
+		t.Errorf("Multiply was incorrect, got: %s, expected: %s.", result, expected)
+	}
+	if err == nil {
+		t.Errorf("nil Error returned, expected non-nil")
+	}
+}

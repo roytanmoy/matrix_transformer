@@ -14,11 +14,14 @@ Send request
 ```
 curl -F 'file=@/resources/matrix.csv' "localhost:8080/echo"
 curl -F 'file=@/resources/matrix.csv' "localhost:8080/invert"
+curl -F 'file=@/resources/matrix.csv' "localhost:8080/sum"
+curl -F 'file=@/resources/matrix.csv' "localhost:8080/flatten"
+curl -F 'file=@/resources/matrix.csv' "localhost:8080/multiply"
 ```
 
 ## Unit Test
 
 Run the unit tests: 
 ```
-go test
+go test -v
 ```

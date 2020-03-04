@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -12,6 +13,8 @@ func Echo(records [][]string) string {
 	}
 	return response[:len(response)-1] // remove trailing newline
 }
+
+//read matrix from csv file and flip the matrix
 
 func Invert(records [][]string) string {
 	// First initialize inverted array
@@ -30,4 +33,52 @@ func Invert(records [][]string) string {
 
 	// Finally use the echo function to convert 2D array to string
 	return Echo(result)
+}
+
+func Flatten(records [][]string) string {
+	var response string
+	for _, row := range records {
+		for _, value := range row {
+			response += value + ","
+		}
+	}
+	return response[:len(response)-1] // remove trailing comma
+}
+
+/*
+Given the 2D array records parse each value to an int, sum the total, and return
+as a string.
+An error is returned if an invalid int is encountered.
+*/
+func Sum(records [][]string) (string, error) {
+	var result int = 0
+	for _, row := range records {
+		for _, value := range row {
+			valueInt, err := strconv.Atoi(value)
+			if err != nil {
+				return "", err
+			}
+			result += valueInt
+		}
+	}
+	return strconv.Itoa(result), nil
+}
+
+/*
+Given the 2D array records parse each value to an int, multiply the total, and\
+return as a string.
+An error is returned if an invalid int is encountered.
+*/
+func Multiply(records [][]string) (string, error) {
+	var result int = 1
+	for _, row := range records {
+		for _, value := range row {
+			valueInt, err := strconv.Atoi(value)
+			if err != nil {
+				return "", err
+			}
+			result *= valueInt
+		}
+	}
+	return strconv.Itoa(result), nil
 }
