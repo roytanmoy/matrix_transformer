@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"log"
 	"net/http"
 )
 
@@ -124,6 +123,8 @@ func main() {
 	http.HandleFunc("/sum", SumHandler)
 	http.HandleFunc("/multiply", MultiplyHandler)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		fmt.Println("Run server error: ", err)
+	}
 
 }
