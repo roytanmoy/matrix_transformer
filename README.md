@@ -46,3 +46,76 @@ go test -v
 PASS
 ok
 ```
+
+
+## Endpoints
+Given an uploaded csv file
+```
+1,2,3
+4,5,6
+7,8,9
+```
+## Echo
+```
+/echo
+```
+Example:
+```
+curl -F 'file=@resources/matrix.csv' "localhost:8080/echo"
+```
+Expected Output:
+```
+1,2,3
+4,5,6
+7,8,9
+```
+## Invert
+```
+/invert
+```
+Example:
+```
+curl -F 'file=@resources/matrix.csv' "localhost:8080/invert"
+```
+Expected output:
+```
+1,4,7
+2,5,8
+3,6,9
+```
+## Flatten
+```
+/flatten
+```
+Example:
+```
+curl -F 'file=@resources/matrix.csv' "localhost:8080/flatten"
+```
+Expected output:
+```
+1,2,3,4,5,6,7,8,9
+```
+## Sum
+```
+/sum
+```
+Example:
+```
+curl -F 'file=@/resources/matrix.csv' "localhost:8080/sum"
+```
+Expected output:
+```
+45
+```
+## Multiply
+```
+/multiply
+```
+Example:
+```
+curl -F 'file=@resources/matrix.csv' "localhost:8080/multiply"
+```
+Expected output:
+```
+362880
+```
