@@ -14,6 +14,13 @@ import (
 // 1. ECHO
 
 func EchoHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(fmt.Sprintf("%v", http.StatusText(404))))
+		return
+	}
+
 	file, _, err := r.FormFile("file")
 	if err != nil {
 		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
@@ -34,6 +41,13 @@ func EchoHandler(w http.ResponseWriter, r *http.Request) {
 // 2. INVERT
 
 func InvertHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(fmt.Sprintf("%v", http.StatusText(404))))
+		return
+	}
+
 	file, _, err := r.FormFile("file")
 	if err != nil {
 		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
@@ -53,6 +67,13 @@ func InvertHandler(w http.ResponseWriter, r *http.Request) {
 
 // 3. FLATTEN
 func FlattenHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(fmt.Sprintf("%v", http.StatusText(404))))
+		return
+	}
+
 	file, _, err := r.FormFile("file")
 	if err != nil {
 		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
@@ -72,6 +93,12 @@ func FlattenHandler(w http.ResponseWriter, r *http.Request) {
 
 // 4. SUM
 func SumHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(fmt.Sprintf("%v", http.StatusText(404))))
+		return
+	}
+
 	file, _, err := r.FormFile("file")
 	if err != nil {
 		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
@@ -95,6 +122,12 @@ func SumHandler(w http.ResponseWriter, r *http.Request) {
 
 // 5. MULTIPLY
 func MultiplyHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(fmt.Sprintf("%v", http.StatusText(404))))
+		return
+	}
+
 	file, _, err := r.FormFile("file")
 	if err != nil {
 		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
