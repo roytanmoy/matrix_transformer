@@ -129,10 +129,12 @@ func MultiplyHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	file, _, err := r.FormFile("file")
+
 	if err != nil {
 		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
 		return
 	}
+
 	defer file.Close()
 
 	records, err := csv.NewReader(file).ReadAll()
