@@ -4,7 +4,7 @@ A basic web server written in GoLang with the ability to perform various operati
 
 ## Usages
 
-Run web server
+Run the web server from the package directory.
 ```
 go run .
 ```
